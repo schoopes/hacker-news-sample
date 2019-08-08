@@ -1,22 +1,19 @@
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer } = require('apollo-server');
+const typeDefs = require('./schema');
+const resolvers = require('./resolvers');
+const { createStore } = require('./utilities');
 
-const links = [];
+const UserAPI = require('./datasources/user');
+const store = createStore();
 
-const typeDefs = gql`
-type Link {}
-type Query {
-  links: [Link]
-}
-`;
+const server = new ApolloServer({ 
+  typeDefs, 
+  resolvers,
+  dataSources: () => ({
+    userAPI: new UserAPI({ store })
+  }), 
+});
 
-const resolvers = {
-  Query: {
-    links: () => links
-  }
-};
-
-const server = new ApolloServer({ typeDefs, resolvers });
-
-server.listen().then(({ url }) => {
-  console.log("Server listening at port ${url}");
+server.listen({ port: 4000 }).then(({ url }) => {
+  console.log(`Server listening at port ${url}`);
 });

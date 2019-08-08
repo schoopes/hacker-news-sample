@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,12 @@
   },
   "homepage": "https://github.com/schoopes/hacker-news-sample#readme",
   "dependencies": {
+    "apollo-datasource": "^0.6.1",
     "apollo-server": "^2.8.1",
-    "graphql": "^14.4.2"
+    "graphql": "^14.4.2",
+    "isemail": "^3.2.0",
+    "nodemon": "^1.19.1",
+    "sequelize": "^5.12.3",
+    "sqlite3": "^4.0.9"
   }
 }
