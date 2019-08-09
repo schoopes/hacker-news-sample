@@ -5,8 +5,6 @@ const typeDefs = gql`
     id: ID!
     email: String!
     username: String!
-    links: [Link]
-    comments: [Comment]
   }
 
   type Link {
@@ -16,15 +14,15 @@ const typeDefs = gql`
     posted: Boolean!
   }
 
-  type Comment {
-    id: ID!
-    body: String!
+  type Query {
+    user(id: ID!): User
+    feed: [Link!] !
+    comments: [Comment]
   }
 
-  type Query {
-    user: User
-    links: [Link]
-    comments: [Comment]
+  type Mutation {
+    createUser(email: String!, username: String!): User!
+    post(url: String!, title: String!, posted: Boolean!): Link!
   }
 `;
 

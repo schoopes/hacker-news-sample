@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "serve": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,6 @@
     "apollo-server": "^2.8.1",
     "graphql": "^14.4.2",
     "isemail": "^3.2.0",
-    "nodemon": "^1.19.1",
-    "sequelize": "^5.12.3",
-    "sqlite3": "^4.0.9"
+    "nodemon": "^1.19.1"
   }
 }
