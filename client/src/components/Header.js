@@ -9,7 +9,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <table>
+        <table id="header-table">
           <tbody>
             <tr>
               <td id="logo-space">

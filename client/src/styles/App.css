@@ -1,4 +1,12 @@
 table {
+  border: 0px;
+  background-color: #f6f6ef;
+  display: table;
+  border-collapse: separate;
+  white-space: normal;
+}
+
+#header-table {
   background-color: #ff6600;
   border: 0px;
   font-family: Verdana, Geneva, sans-serif;

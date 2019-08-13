@@ -5,13 +5,15 @@ const typeDefs = gql`
     id: ID!
     email: String!
     username: String!
+    links: [Link!]!
   }
 
   type Link {
     id: ID!
+    createdAt: DateTime!
     url: String!
     title: String!
-    posted: Boolean!
+    postedBy: User
   }
 
   type Query {
@@ -20,9 +22,15 @@ const typeDefs = gql`
     comments: [Comment]
   }
 
+  type Payload {
+    token: String
+    user: User
+  }
+
   type Mutation {
-    createUser(email: String!, username: String!): User!
-    post(url: String!, title: String!, posted: Boolean!): Link!
+    createUser(email: String!, password: String!, username: String!): User!
+    post(url: String!, title: String!): Link!
+    login(email: String!, password: String!): Payload
   }
 `;
 
