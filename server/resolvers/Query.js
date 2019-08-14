@@ -1,7 +1,7 @@
-import websites from "../data";
+const data = require( "../data");
 
 async function feed(args) {
-  const links = websites;
+  const links = data.websites;
   const searchQueries = [];
 
   links.map(link => {

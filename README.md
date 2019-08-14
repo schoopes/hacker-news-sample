@@ -1,7 +1,5 @@
-# hacker-news-sample
-# Backend: Apollo Server (GraphQL), no database for now - just hard coded data
-# Frontend: Apollo Client & React, reactstrap styles
+# Hacker News Clone using GraphQL, Apollo, and React
 
-# To run nodemon server, cd into /server && use command "npm run serve" 
+To run Apollo server, cd into /server && use command "npm run serve" 
 
-# To run client server, cd into /client && use command "npm run start"
+To run React server, cd into /client && use command "npm run start"

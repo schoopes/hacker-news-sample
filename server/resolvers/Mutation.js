@@ -1,10 +1,12 @@
+const express = require("express");
+const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-import secretOrKey from "../config/keys";
-import {websites, user} from "../data";
+const config = require("../config/keys");
+const data = require( "../data");
 
 function post(input) {
-  const links = websites;
+  const links = data.websites;
   var lastLinkId = links.length;
 
   const newLink = {
@@ -17,9 +19,9 @@ function post(input) {
 }
 
 function login(input) {
-  var user = user;
+  var user = data.user;
 
-  bcrypt.genSalt(10, function(salt) => {
+  bcrypt.genSalt(10, function(salt) {
     bcrypt.hash(user.password, salt, (hash) => {
       user.password = hash;
     });
@@ -30,8 +32,8 @@ function login(input) {
       const payload = { id: user.id, username: user.username, email: user.email };
       jwt.sign(
         payload,
-        secretOrKey,
-        { expires in: 3600 },
+        config.secretOrKey,
+        { expiresIn: 3600 },
         (err, token) => {
           res.json({
             token: "Bearer " + token
@@ -43,21 +45,6 @@ function login(input) {
       return res.status(404).json(errors);
     }
   });
-  const token = jwt.sign({ password: "happydays" }, "secret");
-
-  if (input.email != user.email) {
-    throw new Error('No such user found')
-  }
-
-  const valid = await bcrypt.compare(input.password, user.password)
-  if (!valid) {
-    throw new Error('Invalid password')
-  }
-
-  return {
-    token: jwt.sign({ userId: user.id }, APP_SECRET),
-    user,
-  }
 }
 
 module.exports = {

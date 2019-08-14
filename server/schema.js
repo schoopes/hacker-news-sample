@@ -10,7 +10,6 @@ const typeDefs = gql`
 
   type Link {
     id: ID!
-    createdAt: DateTime!
     url: String!
     title: String!
     postedBy: User
@@ -19,7 +18,6 @@ const typeDefs = gql`
   type Query {
     user(id: ID!): User
     feed: [Link!] !
-    comments: [Comment]
   }
 
   type Payload {
